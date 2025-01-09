@@ -1,5 +1,6 @@
 package org.acme
 
+import jakarta.ws.rs.DefaultValue
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.Path
 import jakarta.ws.rs.Produces
@@ -20,5 +21,5 @@ class GreetingResource (
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    fun hello(@RestQuery name: String?) = "Hello ${name ?: "Guest"}!!"
+    fun hello(@RestQuery @DefaultValue("Guest") name: String) = "Hello $name!!"
 }
