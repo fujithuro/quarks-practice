@@ -21,5 +21,7 @@ class GreetingResource (
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    fun hello(@RestQuery @DefaultValue("Guest") name: String) = "Hello $name!!"
+    fun hello(@RestQuery @DefaultValue("Guest") name: String): String {
+        return "Hello $name!!"
+    }
 }
