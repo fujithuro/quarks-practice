@@ -33,8 +33,8 @@ class GreetingResource (
     @Path("names")
     @Produces(MediaType.TEXT_PLAIN)
     fun names(): String {
-        val greetings: List<Greeting> = Greeting.listAll()
-        val names = greetings.joinToString(",") { it.name }
-        return "I've said hello to $names"
+        return Greeting.listAll()
+                    .joinToString(",") { it.name }
+                    .let { "I've said hello to $it" }
     }
 }
