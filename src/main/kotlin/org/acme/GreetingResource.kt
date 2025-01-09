@@ -1,5 +1,6 @@
 package org.acme
 
+import jakarta.transaction.Transactional
 import jakarta.ws.rs.DefaultValue
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.Path
@@ -20,8 +21,11 @@ class GreetingResource (
     }
 
     @GET
+    @Transactional
     @Produces(MediaType.TEXT_PLAIN)
     fun hello(@RestQuery @DefaultValue("Guest") name: String): String {
+        val greeting = Greeting().also { it.name = name }
+        greeting.persist()
         return "Hello $name!!"
     }
 }
