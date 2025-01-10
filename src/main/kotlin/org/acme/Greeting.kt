@@ -6,7 +6,7 @@ import jakarta.persistence.Entity
 
 @Entity
 class Greeting: PanacheEntity() {
-    companion object : PanacheCompanion<Greeting>
+    companion object: PanacheCompanion<Greeting>
 
     lateinit var name: String
 }
