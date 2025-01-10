@@ -26,7 +26,7 @@ class GreetingResource (
     fun hello(@RestQuery @DefaultValue("Guest") name: String): String {
         val greeting = Greeting().also { it.name = name }
         greeting.persist()
-        return "Hello $name!!"
+        return "Hello ${greeting.name}!!"
     }
 
     @GET
