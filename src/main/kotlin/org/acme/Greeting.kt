@@ -8,5 +8,5 @@ import jakarta.persistence.Entity
 class Greeting: PanacheEntity() {
     companion object : PanacheCompanion<Greeting>
 
-    var name: String = ""
+    lateinit var name: String
 }
