@@ -11,6 +11,7 @@ import org.jboss.resteasy.reactive.RestQuery
 @Path("/hello")
 class GreetingResource (
     private val service: GreetingService,
+    private val repository: GreetingRepository,
 ) {
 
     @GET
@@ -25,7 +26,7 @@ class GreetingResource (
     @Produces(MediaType.TEXT_PLAIN)
     fun hello(@RestQuery @DefaultValue("Guest") name: String): String {
         val greeting = Greeting().also { it.name = name }
-        greeting.persist()
+        repository.persist(greeting)
         return "Hello ${greeting.name}!!"
     }
 
@@ -33,8 +34,8 @@ class GreetingResource (
     @Path("names")
     @Produces(MediaType.TEXT_PLAIN)
     fun names(): String {
-        return Greeting.listAll()
-                    .joinToString(",") { it.name }
-                    .let { "I've said hello to $it" }
+        return repository.listAll()
+                        .joinToString(",") { it.name }
+                        .let { "I've said hello to $it" }
     }
 }
