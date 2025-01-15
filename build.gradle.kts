@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "2.0.21"
     kotlin("plugin.allopen") version "2.0.21"
     id("io.quarkus")
+    id("com.google.protobuf") version "0.9.4"
 }
 
 repositories {
@@ -14,6 +15,11 @@ val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
 
 dependencies {
+    implementation("com.google.protobuf:protobuf-java:4.28.2")
+    implementation("com.google.protobuf:protobuf-kotlin:4.28.2")
+    implementation("io.grpc:grpc-protobuf:1.61.0")
+    implementation("io.grpc:grpc-stub:1.61.0")
+    implementation("io.grpc:grpc-kotlin-stub:1.4.1")
     implementation("io.quarkus:quarkus-hibernate-orm-panache-kotlin")
     implementation("io.quarkus:quarkus-jdbc-postgresql")
     implementation("io.quarkus:quarkus-grpc")
