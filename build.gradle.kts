@@ -1,10 +1,7 @@
-//import com.google.protobuf.gradle.id
-
 plugins {
     kotlin("jvm") version "2.0.21"
     kotlin("plugin.allopen") version "2.0.21"
     id("io.quarkus")
-//    id("com.google.protobuf") version "0.9.4"
 }
 
 repositories {
@@ -17,11 +14,6 @@ val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
 
 dependencies {
-//    implementation("com.google.protobuf:protobuf-java:4.28.2")
-//    implementation("com.google.protobuf:protobuf-kotlin:4.28.2")
-//    implementation("io.grpc:grpc-protobuf:1.61.0")
-//    implementation("io.grpc:grpc-stub:1.61.0")
-//    implementation("io.grpc:grpc-kotlin-stub:1.4.1")
     implementation("io.quarkus:quarkus-hibernate-orm-panache-kotlin")
     implementation("io.quarkus:quarkus-jdbc-postgresql")
     implementation("io.quarkus:quarkus-grpc")
@@ -59,28 +51,3 @@ kotlin {
         javaParameters = true
     }
 }
-
-//protobuf {
-//    protoc {
-//        artifact = "com.google.protobuf:protoc:4.28.2"
-//    }
-//    plugins {
-//        id("grpc") {
-//            artifact = "io.grpc:protoc-gen-grpc-java:1.61.0"
-//        }
-//        id("grpckt") {
-//            artifact = "io.grpc:protoc-gen-grpc-kotlin:1.4.1:jdk8@jar"
-//        }
-//    }
-//    generateProtoTasks {
-//        all().forEach {
-//            it.plugins {
-//                id("grpc")
-//                id("grpckt")
-//            }
-//            it.builtins {
-//                id("kotlin")
-//            }
-//        }
-//    }
-//}
